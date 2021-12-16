@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Items to be evaluated</h2>
+
+    <form method="post", enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for eval in evaluation_list %}
+      <p>
+        {{ eval.user }}<br>
+        {{ eval.evaluation_text}}<br>
+        {{ eval.contact_choice}}<br>
+        <div id="image">
+            <img src="../{{ eval.image }}">
+        </div>
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        
+      </p>
+    {% endfor %}
+    </form>
+{% endblock %}
