@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 import configparser
-import django_heroku
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -170,4 +169,3 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') if os.environ.get('E
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-django_heroku.settings(locals())
